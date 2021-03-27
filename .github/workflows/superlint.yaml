@@ -20,4 +20,4 @@ jobs:
       - name: Stardard Enforcement
         run: poetry run flake8 src/
       - name: Check the typings
-        run: poetry run mypy --config-file pyprojerct.toml src/
+        run: poetry run mypy --config-file pyproject.toml src/
