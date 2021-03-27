@@ -10,7 +10,7 @@ class FileRunner(FoxRunner):
             try:
                 self.run(str(byte_array, encoding="utf-8"))
             except ParseError as e:
-
+                print(e)
                 return exit(65)
 
     def __call__(self, file_path: str):

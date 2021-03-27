@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from src.fox.intrepreter.tokens.token import Token
 from src.fox.intrepreter.syntax_expressions.expr import Expr, Visitor
+from src.fox.intrepreter.tokens.token import Token
 
 
 class Unary(Expr):

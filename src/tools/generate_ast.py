@@ -1,6 +1,5 @@
-from pathlib import Path
-
 import re
+from pathlib import Path
 
 TYPES = {
     "Binary": [("left", "Expr"), ("operator", "Token"), ("right", "Expr")],
@@ -42,7 +41,7 @@ def generate_file(output_dir, class_name, fields):
         file.write("\n")
 
         for field_name, field_type in fields:
-            file.write(f"\t@property\n")
+            file.write("\t@property\n")
             file.write(f"\tdef {field_name}(self) -> {field_type}:\n")
             file.write(f"\t\treturn self.__{field_name}\n\n")
 
@@ -62,24 +61,24 @@ def generate_base_file(base_dir, class_name, types):
         file.write("from abc import ABC, abstractmethod\n")
         file.write("from typing import TypeVar, Generic\n\n\n")
 
-        file.write(f"T = TypeVar('T')\n\n\n")
-        file.write(f"class Visitor(ABC, Generic[T]):\n\n")
+        file.write("T = TypeVar('T')\n\n\n")
+        file.write("class Visitor(ABC, Generic[T]):\n\n")
 
         for type_name in types.keys():
             snaked_type_name = snake_case(type_name)
 
-            file.write(f"\t@abstractmethod\n")
+            file.write("\t@abstractmethod\n")
             file.write(
                 f"\tdef visit_{snaked_type_name}_expr(self, expr: '{type_name}') -> T:\n"
             )
-            file.write(f"\t\t...\n\n")
+            file.write("\t\t...\n\n")
 
-        file.write(f"\n")
+        file.write("\n")
 
-        file.write(f"class {class_name}(ABC):\n\n")
-        file.write(f"\t@abstractmethod\n")
-        file.write(f"\tdef accept(self, visitor: Visitor[T]) -> T:\n")
-        file.write(f"\t\t...\n")
+        file.write("class {class_name}(ABC):\n\n")
+        file.write("\t@abstractmethod\n")
+        file.write("\tdef accept(self, visitor: Visitor[T]) -> T:\n")
+        file.write("\t\t...\n")
 
 
 if __name__ == "__main__":

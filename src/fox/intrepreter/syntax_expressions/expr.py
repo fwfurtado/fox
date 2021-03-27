@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic
+from typing import Generic, TypeVar
 
 from src.fox.intrepreter.syntax_expressions.binary import Binary
 from src.fox.intrepreter.syntax_expressions.grouping import Grouping

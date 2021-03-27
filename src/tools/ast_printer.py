@@ -1,7 +1,5 @@
-from typing import List
-
 from src.fox.intrepreter.syntax_expressions.binary import Binary
-from src.fox.intrepreter.syntax_expressions.expr import Visitor, Expr
+from src.fox.intrepreter.syntax_expressions.expr import Expr, Visitor
 from src.fox.intrepreter.syntax_expressions.grouping import Grouping
 from src.fox.intrepreter.syntax_expressions.literal import Literal
 from src.fox.intrepreter.syntax_expressions.unary import Unary
@@ -11,7 +9,7 @@ from src.fox.intrepreter.tokens.token_type import TokenType
 
 
 class AstPrinter(Visitor[str]):
-    def print(self, expr: Expr):
+    def plot(self, expr: Expr):
         return expr.accept(self)
 
     def _parenthesize(self, name: str, *expressions: Expr):
@@ -47,4 +45,4 @@ if __name__ == "__main__":
         Grouping(Literal(45.76)),
     )
 
-    print(printer.print(expression))
+    print(printer.plot(expression))

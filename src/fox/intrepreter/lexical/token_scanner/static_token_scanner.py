@@ -1,4 +1,4 @@
-from typing import Optional, Dict, Set
+from typing import Dict, Optional, Set
 
 from src.fox.intrepreter.lexical.scanner_mixin import ScannerMixin
 from src.fox.intrepreter.lexical.token_scanner.abstract_token_scanner import (
