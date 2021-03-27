@@ -10,6 +10,7 @@ jobs:
 
   deppendencies:
     name: Install dependencies
+    needs: checkout
     runs-on: ubuntu-latest
     steps:
       - name: Setup Python
@@ -46,6 +47,7 @@ jobs:
             ${{ runner.os }}-
   lint:
     name: Enforce CodeStyle
+    needs: dependencies
     runs-on: ubuntu-latest
     steps:
       - name: Check CodeStyle
