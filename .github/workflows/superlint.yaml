@@ -1,23 +1,56 @@
 name: Super Lint
 on: push
 jobs:
-  build:
-    name: Install dependencies
+  checkout:
+    name: Checkout Project
     runs-on: ubuntu-latest
     steps:
       - name: Pull the code
         uses: actions/checkout@v2
+
+  deppendencies:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
       - name: Install Poetry
-        run: pip install --user pipx && pipx ensurepath && pipx install poetry
+        run: pip install --user pipx
+      - name: Config pipx to ensurepath
+        run: pipx ensurepath
+      - name: Install Poetry
+        run:  pipx install poetry
+      - name: Cache Pip dependencies
+        uses: actions/cache@v2
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-build-pip-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-pip
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
       - name: Install Project Depedencies
         run: poetry install
-      - name: CodeStyle Enforcement
+      - name: Cache Pip dependencies
+        uses: actions/cache@v2
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.cache/poetry
+          key: ${{ runner.os }}-build-poetry-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-poetry
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+  lint:
+    name: Enforce CodeStyle
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check CodeStyle
         run:  poetry run black --check
-      - name: Stardard Enforcement
+      - name: Chek Stardards
         run: poetry run flake8 src/
       - name: Check the typings
         run: poetry run mypy --config-file pyproject.toml src/
