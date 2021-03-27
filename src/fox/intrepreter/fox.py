@@ -1,5 +1,5 @@
-from fox.intrepreter.runners.file_runner import run_file
-from fox.intrepreter.runners.repl_runner import repl
+from src.fox.intrepreter.runners.file_runner import run_file
+from src.fox.intrepreter.runners.repl_runner import repl
 
 
 def main(args):

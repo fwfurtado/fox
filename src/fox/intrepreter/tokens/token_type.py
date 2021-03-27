@@ -48,5 +48,3 @@ class TokenType(Enum):
     VAR = "VAR"
     WHILE = "WHILE"
     EOF = "EOF"
-
-

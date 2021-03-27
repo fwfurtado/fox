@@ -1,13 +1,14 @@
 from typing import Optional
 
-from fox.intrepreter.scanners.scanner_mixin import ScannerMixin
-from fox.intrepreter.scanners.token_scanner.abstract_token_scanner import AbstractTokenScanner
-from fox.intrepreter.tokens.token import Token
-from fox.intrepreter.tokens.token_type import TokenType
+from src.fox.intrepreter.lexical.scanner_mixin import ScannerMixin
+from src.fox.intrepreter.lexical.token_scanner.abstract_token_scanner import (
+    AbstractTokenScanner,
+)
+from src.fox.intrepreter.tokens.token import Token
+from src.fox.intrepreter.tokens.token_type import TokenType
 
 
 class StringTokenScanner(AbstractTokenScanner):
-
     def __init__(self, mixin: ScannerMixin):
         self.__mixin = mixin
 
@@ -28,7 +29,7 @@ class StringTokenScanner(AbstractTokenScanner):
         self.__mixin.advance()
 
         lexeme = self.__mixin.lexeme()
-        literal = lexeme[1: len(lexeme) - 1]
+        literal = lexeme[1 : len(lexeme) - 1]
         position = self.__mixin.position()
 
         return Token(TokenType.STRING, lexeme, literal, position)

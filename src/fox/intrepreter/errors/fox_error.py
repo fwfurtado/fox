@@ -1,5 +1,4 @@
 class FoxError(RuntimeError):
-
     def __init__(self, line: int, where: str, message: str):
         self.__line = line
         self.__where = where
@@ -16,4 +15,3 @@ class FoxError(RuntimeError):
     @property
     def message(self):
         return self.__message
-

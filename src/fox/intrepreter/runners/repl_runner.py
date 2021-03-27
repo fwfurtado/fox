@@ -1,9 +1,8 @@
-from fox.intrepreter.errors.parse_error import ParseError
-from fox.intrepreter.runners.fox_runner import FoxRunner
+from src.fox.intrepreter.errors.parse_error import ParseError
+from src.fox.intrepreter.runners.fox_runner import FoxRunner
 
 
 class ReplRunner(FoxRunner):
-
     def run_repl(self):
         while True:
 

@@ -1,9 +1,8 @@
-from fox.intrepreter.errors.parse_error import ParseError
-from fox.intrepreter.runners.fox_runner import FoxRunner
+from src.fox.intrepreter.errors.parse_error import ParseError
+from src.fox.intrepreter.runners.fox_runner import FoxRunner
 
 
 class FileRunner(FoxRunner):
-
     def run_from_file(self, file_path: str):
         with open(file_path, "rb") as read_file:
             byte_array = read_file.read()
@@ -19,6 +18,3 @@ class FileRunner(FoxRunner):
 
 
 run_file = FileRunner()
-
-if __name__ == '__main__':
-    run_file("/home/fwfurtado/projects/pocs/fox/example.fox")

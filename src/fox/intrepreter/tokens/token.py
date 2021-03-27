@@ -1,12 +1,13 @@
 from typing import Any
 
-from fox.intrepreter.tokens.token_posinion import TokenPosition
-from fox.intrepreter.tokens.token_type import TokenType
+from src.fox.intrepreter.tokens.token_posinion import TokenPosition
+from src.fox.intrepreter.tokens.token_type import TokenType
 
 
 class Token:
-
-    def __init__(self, token_type: TokenType, lexeme: str, literal: Any, position: TokenPosition):
+    def __init__(
+        self, token_type: TokenType, lexeme: str, literal: Any, position: TokenPosition
+    ):
         self.__token_type = token_type
         self.__lexeme = lexeme
         self.__literal = literal

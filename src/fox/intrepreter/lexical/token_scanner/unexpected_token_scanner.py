@@ -1,7 +1,9 @@
 from typing import Optional
 
-from fox.intrepreter.scanners.token_scanner.abstract_token_scanner import AbstractTokenScanner
-from fox.intrepreter.tokens.token import Token
+from src.fox.intrepreter.lexical.token_scanner.abstract_token_scanner import (
+    AbstractTokenScanner,
+)
+from src.fox.intrepreter.tokens.token import Token
 
 
 class UnexpectedTokenScanner(AbstractTokenScanner):

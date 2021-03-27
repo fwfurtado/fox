@@ -1,10 +1,9 @@
 from abc import ABC
 
-from fox.intrepreter.tokens.token_posinion import TokenPosition
+from src.fox.intrepreter.tokens.token_posinion import TokenPosition
 
 
 class ScannerMixin(ABC):
-
     def peek(self) -> str:
         raise NotImplementedError()
 

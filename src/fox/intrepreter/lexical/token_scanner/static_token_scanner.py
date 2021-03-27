@@ -1,21 +1,17 @@
-from typing import Optional
+from typing import Optional, Dict, Set
 
-from fox.intrepreter.scanners.scanner_mixin import ScannerMixin
-from fox.intrepreter.scanners.token_scanner.abstract_token_scanner import AbstractTokenScanner
-from fox.intrepreter.tokens.token import Token
-from fox.intrepreter.tokens.token_type import TokenType
+from src.fox.intrepreter.lexical.scanner_mixin import ScannerMixin
+from src.fox.intrepreter.lexical.token_scanner.abstract_token_scanner import (
+    AbstractTokenScanner,
+)
+from src.fox.intrepreter.tokens.token import Token
+from src.fox.intrepreter.tokens.token_type import TokenType
 
 
 class StaticTokenScanner(AbstractTokenScanner):
-    ACCEPTED_TOKENS = {
-        "(", ")",
-        "{", "}",
-        ",", ".",
-        "-", "+", ";", "*"
+    ACCEPTED_TOKENS: Set[str] = {"(", ")", "{", "}", ",", ".", "-", "+", ";", "*"}
 
-    }
-
-    TOKEN_DICT = {
+    TOKEN_DICT: Dict[str, TokenType] = {
         "(": TokenType.LEFT_PAREN,
         ")": TokenType.RIGHT_PAREN,
         "{": TokenType.LEFT_BRACE,
@@ -35,7 +31,7 @@ class StaticTokenScanner(AbstractTokenScanner):
         return char in StaticTokenScanner.ACCEPTED_TOKENS
 
     def to_token(self, char: str) -> Optional[Token]:
-        token_type = StaticTokenScanner.TOKEN_DICT.get(char)
+        token_type = StaticTokenScanner.TOKEN_DICT[char]
         lexeme = self.__mixin.lexeme()
         position = self.__mixin.position()
 
