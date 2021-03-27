@@ -47,7 +47,7 @@ jobs:
             ${{ runner.os }}-
   lint:
     name: Enforce CodeStyle
-    needs: dependencies
+    needs: deppendencies
     runs-on: ubuntu-latest
     steps:
       - name: Check CodeStyle
